@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SensorApi.Models;
 using SensorApi.Services;
 
 namespace SensorApi.Controllers
 {
+    [Authorize]
     [Route("api/[Controller]")]
     public class TripController : Controller
     {
-        private ITripService _tripService;
+        private readonly ITripService _tripService;
 
         public TripController()
         {
@@ -35,11 +37,6 @@ namespace SensorApi.Controllers
             
         }
 
-        // GET: api/Trip/5
-        public string Get(Trip id)
-        {
-            return "value";
-        }
 
         // POST: api/Trip
         [HttpPost]
@@ -61,9 +58,12 @@ namespace SensorApi.Controllers
             }
         }
 
-        // DELETE: api/Trip/5
-        public void Delete(int id)
+        // GET api/values
+        [HttpGet]
+        [Route("Test")]
+        public IEnumerable<string> Test()
         {
+            return new string[] { "value1", "value2" };
         }
     }
 }
