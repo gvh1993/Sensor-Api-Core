@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SensorApi.Models
 {
-    public class MeasurementSession
+    public class SensorMeasurementSession
     {
         public DateTimeOffset Timestamp { get; set; }
         //battery

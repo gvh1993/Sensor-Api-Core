@@ -10,5 +10,9 @@ namespace SensorApi.Models
         public DateTimeOffset Timestamp { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public float Speed { get; set; }
+        public float Accuracy { get; set; }
+        public float Bearing { get; set; }
+        public double Altitude { get; set; }
     }
 }

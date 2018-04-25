@@ -20,6 +20,6 @@ namespace SensorApi.Models
         public List<Gravity> Gravities { get; set; }
         public List<Orientation> Orientations { get; set; }
         public List<RotationVector> RotationVectors { get; set; }
-        public List<MeasurementSession> MeasurementSessions { get; set; }
+        public List<SensorMeasurementSession> SensorMeasurementSessions { get; set; }
     }
 }

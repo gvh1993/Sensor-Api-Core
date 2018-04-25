@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  sensorwebapi:
+    image: sensorwebapi
+    build:
+      context: .
+      dockerfile: SensorWebApi/Dockerfile
