@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using SensorApi.Models;
 using SensorApi.Services;
 
@@ -64,6 +65,46 @@ namespace SensorApi.Controllers
         public IEnumerable<string> Test()
         {
             return new string[] { "value1", "value2" };
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+        public IActionResult Delete(string id)
+        {
+            try
+            {
+                ObjectId objectId = new ObjectId(id);
+                bool deleteSuccess = _tripService.Delete(objectId);
+                if (!deleteSuccess)
+                {
+                    return StatusCode(500);
+                }
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPost]
+        [Route("Update")]
+        public IActionResult Update([FromBody]Trip trip, string id)
+        {
+            try
+            {
+                trip.Id = new ObjectId(id);
+                bool updateSuccess = _tripService.Update(trip);
+                if (!updateSuccess)
+                {
+                    return StatusCode(500);
+                }
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
         }
     }
 }

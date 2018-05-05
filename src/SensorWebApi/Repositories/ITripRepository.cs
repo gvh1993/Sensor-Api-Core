@@ -1,4 +1,5 @@
-﻿using SensorApi.Models;
+﻿using MongoDB.Bson;
+using SensorApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace SensorApi.Repositories
         bool Add(Trip entity);
         Trip Get();
         IEnumerable<Trip> GetAll();
-        void Remove(Trip entity);
+        bool Delete(ObjectId id);
+        bool Update(Trip trip);
     }
 }

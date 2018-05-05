@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MongoDB.Bson;
 using SensorApi.Models;
 using SensorApi.Repositories;
 
@@ -24,6 +25,16 @@ namespace SensorApi.Services
         public IEnumerable<Trip> GetAll()
         {
             return _tripRepository.GetAll();
+        }
+
+        public bool Delete(ObjectId id)
+        {
+            return _tripRepository.Delete(id);
+        }
+
+        public bool Update(Trip trip)
+        {
+            return _tripRepository.Update(trip);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using SensorApi.Helpers;
 using SensorApi.Models;
@@ -52,9 +53,35 @@ namespace SensorApi.Repositories
             }
         }
 
-        public void Remove(Trip entity)
+        public bool Delete(ObjectId id)
         {
+            try
+            {
+                Trip trip = tripCollection.FindOneAndDelete(x => x.Id == id);
+                if (trip != null)
+                {
+                    return true;
+                }
 
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool Update(Trip trip)
+        {
+            try { 
+                var replaceResult = tripCollection.ReplaceOne(x => x.Id == trip.Id, trip);
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }
