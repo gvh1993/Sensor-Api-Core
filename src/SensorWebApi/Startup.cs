@@ -42,7 +42,7 @@ namespace SensorWebApi
                  {
                      OnValidatePrincipal = context =>
                      {
-                         if ((context.UserName == "userName") && (context.Password == "password"))
+                         if ((context.UserName == "username") && (context.Password == "password"))
                          {
                              var claims = new List<Claim>
                              {

@@ -19,6 +19,7 @@ namespace SensorApi.Helpers
         public MongoDBManager()
         {
             MongoClient client = new MongoClient(Startup.ConnectionString);
+            // MongoClient client = new MongoClient("mongodb://localhost");
             Db = client.GetDatabase("sensor");
         }
 
